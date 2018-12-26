@@ -12,10 +12,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/sms', (req, res) => {
-  console.log('response from text ', req.body);
+  let quote = quote()
+  console.log('quote text ', quote);
   const twiml = new MessagingResponse();
 
-  twiml.message(quote());
+  twiml.message(quote);
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
